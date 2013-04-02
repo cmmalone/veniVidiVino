@@ -6,6 +6,7 @@
 #########################################
 
 import growHarvestPress
+import testCellar
 
 import numpy
 import scipy
@@ -19,6 +20,10 @@ def main():
 #        print wine.description
 
     growHarvestPress.dictionarizeTerms( wine_list )
+
+
+    test_list = testCellar.soupWine()
+    growHarvestPress.dictionarizeTerms( test_list )
 
 
 if __name__=="__main__":

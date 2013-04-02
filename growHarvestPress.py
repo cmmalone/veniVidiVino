@@ -23,6 +23,7 @@ def dictionarizeTerms( wine_list ):
             description = wine.description
             description = re.sub(r"\&[a-zA-Z0-9]+\;", " ", description) #replaces anything of form &TAG;
             description = description.replace("&nbsp", " ") #gets rid of the remaining &nbsp
+            description = description.replace("-", " ") #gets rid of the remaining &nbsp
             words = description.split(" ")
             for word in words:   ### strip away trailing punctuation
                 words_2 = word.split("&")
@@ -33,7 +34,7 @@ def dictionarizeTerms( wine_list ):
                 word = word.lower()
                 word = stem(word)
                 ### add a new term to the dictionary
-                if (word == "" or word == "-"):  #don't include empty words or just hyphens
+                if (word == ""):  #don't include empty words
                     continue
                 if word not in stopwords.words('english'): #don't include stopwords
                     if word not in term_dictionary.keys():
