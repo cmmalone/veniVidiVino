@@ -10,8 +10,8 @@ import re
 import copy
 from scipy.sparse import lil_matrix
 from stemming.porter2 import stem
+from nltk.corpus import stopwords
 from bottleLabel import bottleLabel
-
 
 def dictionarizeTerms( wine_list ):
     ### store all the words in the description in a dictionary
@@ -21,25 +21,31 @@ def dictionarizeTerms( wine_list ):
     for wine in wine_list:
         if not wine.description == None:
             description = wine.description
+            description = re.sub(r"\&[a-zA-Z0-9]+\;", " ", description) #replaces anything of form &TAG;
+            description = description.replace("&nbsp", " ") #gets rid of the remaining &nbsp
             words = description.split(" ")
             for word in words:   ### strip away trailing punctuation
                 words_2 = word.split("&")
                 if ( len( words_2 )>1 and words_2[0] != '' ):
                     word = words_2[0]
-                if word[-1] in ['.', ',', ';']:
+                if ( len( word ) > 0 and word[-1] in ['.', ',', ';']): #added length check
                     word = word[:-1]
                 word = word.lower()
                 word = stem(word)
                 ### add a new term to the dictionary
-                if word not in term_dictionary.keys(): 
-                    term_dictionary[word] = (term_index, 1)
-                    term_index += 1
+                if (word == "" or word == "-"):  #don't include empty words or just hyphens
+                    continue
+                if word not in stopwords.words('english'): #don't include stopwords
+                    if word not in term_dictionary.keys():
+                        term_dictionary[word] = (term_index, 1)
+                        term_index += 1
                 ### increment the count for a term already in the dictionary
-                else:
-                    term_params = term_dictionary[word]
-                    counter = term_params[1]
-                    counter += 1
-                    term_dictionary[word] = (term_params[0], counter)
+                    else:
+                        term_params = term_dictionary[word]
+                        counter = term_params[1]
+                        counter += 1
+                        term_dictionary[word] = (term_params[0], counter)
+    print sorted(term_dictionary)   #print just words for easy scanning by eye
     print term_dictionary
 
 
