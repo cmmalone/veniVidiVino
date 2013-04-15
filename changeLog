@@ -1,3 +1,15 @@
+4/15/2013 Katie Malone  
+    A interface.py
+    * a command-line entry system for saying which wine you want
+        a pairing for
+    * integrated with veniVidiVino.py
+
+4/5/2013 Katie Malone <cmmalone.158 CHEZ gmail.com>
+    A vineAndBranches.py
+    * networkx implementation of a wine graph
+    * graphically displays taste relationships between wines
+    * still in progress
+
 4/1/2013 Jet Goodson < JetGoodson CHEZ gmail.com >
 	M growHarvestPress.py
 	* some text cleaning
