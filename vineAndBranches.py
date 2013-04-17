@@ -65,46 +65,47 @@ def AddSmokeTobaccoLeather( g ):
 
  
 
-def main():
+def Tree():
     """
         Recreates the wine network structure found here:
         http://winefolly.com/review/different-types-of-wine/
     """    
 
-    g = nx.Graph()
+    g = nx.DiGraph()
 
-    g.add_edge('red', 'white', weight=5.0)
+#    g.add_edge('red', 'white', weight=5.0)
     
     g.add_edge('red', 'savory red', weight = 4.0)
-    g.add_edge('red', 'sweet red', weight = 4.0)
-    g.add_edge('red', 'fruity red', weight = 4.0)
+#    g.add_edge('red', 'sweet red', weight = 4.0)
+#    g.add_edge('red', 'fruity red', weight = 4.0)
 
     AddClayCuredMeats( g )
     AddTruffleForest( g )
     AddSmokeTobaccoLeather( g )
 
 
-    g.add_edge('savory red', 'black pepper gravel', weight = 3.0)
+#    g.add_edge('savory red', 'black pepper gravel', weight = 3.0)
+#
+#    g.add_edge('black pepper gravel', 'high tannin bpg', weight = 2.0)
+#    g.add_edge('black pepper gravel', 'spicy juicy bpg', weight = 2.0)
+#    g.add_edge('black pepper gravel', 'round bpg', weight = 2.0)
+#
+#    g.add_edge('fruity red', 'tart cherry cranberry', weight = 3.0)
+#    g.add_edge('fruity red', 'strawberry cherry', weight = 3.0)
+#    g.add_edge('fruity red', 'black cherry raspberry', weight = 3.0)
+#    g.add_edge('fruity red', 'blueberry blackberry', weight = 3.0)
+
+    #print(g.nodes())
+    #nx.draw(g) 
+    #plt.show()
 
 
+#    print 'here are the _wines_ in the graph right now: '
+    wines_in_tree = [k for k,v in g.out_degree().iteritems() if v==0]
+#    print wines_in_tree
+
+    return wines_in_tree
 
 
-    g.add_edge('black pepper gravel', 'high tannin bpg', weight = 2.0)
-    g.add_edge('black pepper gravel', 'spicy juicy bpg', weight = 2.0)
-    g.add_edge('black pepper gravel', 'round bpg', weight = 2.0)
-
-
- 
-
-    g.add_edge('fruity red', 'tart cherry cranberry', weight = 3.0)
-    g.add_edge('fruity red', 'strawberry cherry', weight = 3.0)
-    g.add_edge('fruity red', 'black cherry raspberry', weight = 3.0)
-    g.add_edge('fruity red', 'blueberry blackberry', weight = 3.0)
-
-
-    nx.draw(g) 
-    plt.show()
-
-
-if __name__=="__main__":
-    main()
+#if __name__=="__main__":
+#    main()

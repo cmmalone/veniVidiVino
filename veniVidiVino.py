@@ -7,23 +7,22 @@
 
 import growHarvestPress
 import testCellar
+import interface
 
 import numpy
 import scipy
 import sklearn
 
 def main():
-    wine_list = growHarvestPress.processHTML()
 
-#    for wine in wine_list[1:]:
-#        print wine.name
-#        print wine.description
+    wine_list = growHarvestPress.processHTML()
+    interface.interface(wine_list)
 
     growHarvestPress.dictionarizeTerms( wine_list )
 
 
-    test_list = testCellar.soupWine()
-    growHarvestPress.dictionarizeTerms( test_list )
+#    test_list = testCellar.soupWine()
+#    growHarvestPress.dictionarizeTerms( test_list )
 
 
 if __name__=="__main__":

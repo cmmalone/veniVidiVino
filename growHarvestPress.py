@@ -46,8 +46,8 @@ def dictionarizeTerms( wine_list ):
                         counter = term_params[1]
                         counter += 1
                         term_dictionary[word] = (term_params[0], counter)
-    print sorted(term_dictionary)   #print just words for easy scanning by eye
-    print term_dictionary
+#    print sorted(term_dictionary)   #print just words for easy scanning by eye
+#    print term_dictionary
 
 
 def tagStrip( string ):
@@ -105,7 +105,7 @@ def processHTML():
                 ### post-process to strip away tags and stuff 
                 bL = bottleLabel()
                 if name_str:
-                    bL.name = tagStrip( name_str.group() )
+                    bL.name = tagStrip( name_str.group() ).lower()
                 if aging_str:
                     bL.aging = tagStrip( aging_str.group() )
                 if comparable_wines_str:
@@ -118,8 +118,6 @@ def processHTML():
                     bL.oak = tagStrip( oak_str.group() )
                 if description_str:
                     bL.description = tagStrip( description_str.group() )
-#                print bL.name
-#                print bL.description
                 menu.append( copy.deepcopy(bL) )
     return menu
 
