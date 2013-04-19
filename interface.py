@@ -8,7 +8,7 @@
 
 import sys
 import growHarvestPress
-import vineAndBranches
+import pickle
 
 def interface(wine_list):
     desired_wine = raw_input("What wine would you like a pairing for? ")
@@ -28,6 +28,6 @@ def interface(wine_list):
 
     else:
         print "that wine is not in the training set" 
-        wine_tree = vineAndBranches.Tree()
+        wine_tree = pickle.load( open("train/tree.p", "rb") )
         if desired_wine in wine_tree:
             print "but it is in the tree!"

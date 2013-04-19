@@ -8,6 +8,7 @@
 
 import re
 import copy
+import pickle
 from scipy.sparse import lil_matrix
 from stemming.porter2 import stem
 from nltk.corpus import stopwords
@@ -78,7 +79,7 @@ def tagStrip( string ):
         return description
 
 
-def processHTML():
+def main():
     red_in = open("train/red_train.html", "rU")
     white_in = open("train/white_train.html", "rU")
 
@@ -119,5 +120,10 @@ def processHTML():
                 if description_str:
                     bL.description = tagStrip( description_str.group() )
                 menu.append( copy.deepcopy(bL) )
+    
+    pickle.dump( menu, open("train/training_cellar.p", "wb") )
     return menu
 
+
+if __name__=="__main__":
+    main()

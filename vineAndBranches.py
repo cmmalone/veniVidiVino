@@ -6,6 +6,7 @@
 #########################################
 
 
+import pickle
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -65,7 +66,7 @@ def AddSmokeTobaccoLeather( g ):
 
  
 
-def Tree():
+def main():
     """
         Recreates the wine network structure found here:
         http://winefolly.com/review/different-types-of-wine/
@@ -99,13 +100,11 @@ def Tree():
     #nx.draw(g) 
     #plt.show()
 
-
-#    print 'here are the _wines_ in the graph right now: '
     wines_in_tree = [k for k,v in g.out_degree().iteritems() if v==0]
-#    print wines_in_tree
 
-    return wines_in_tree
+    pickle.dump( wines_in_tree, open("train/tree.p", "wb") )
+    #return wines_in_tree
 
 
-#if __name__=="__main__":
-#    main()
+if __name__=="__main__":
+    main()

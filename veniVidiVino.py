@@ -12,10 +12,11 @@ import interface
 import numpy
 import scipy
 import sklearn
+import pickle
 
 def main():
 
-    wine_list = growHarvestPress.processHTML()
+    wine_list = pickle.load( open("train/training_cellar.p", "rb") ) 
     interface.interface(wine_list)
 
     growHarvestPress.dictionarizeTerms( wine_list )
