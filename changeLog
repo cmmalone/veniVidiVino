@@ -1,3 +1,11 @@
+4/19/2013 Katie Malone  
+    C veniVidiVino.py
+    C interface.py
+    C growHarvestPress.py
+    C vineAndBranches.py
+    * the wine tree and training cellar are now pickled and
+        saved, rather than reconstructed with each new run
+
 4/15/2013 Katie Malone  
     A interface.py
     * a command-line entry system for saying which wine you want
