@@ -1,3 +1,12 @@
+4/26/2013 Jet  Goodson
+    M README.m
+	* added Katie's email instructions
+    M interface.py
+    M vineAndBranches.py
+	* changed so that we pickle graph itself instead of list
+	* added interface features
+	* added in all wines from graph
+
 4/19/2013 Katie Malone  
     C veniVidiVino.py
     C interface.py
